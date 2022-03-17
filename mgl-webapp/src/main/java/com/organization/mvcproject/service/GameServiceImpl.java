@@ -6,34 +6,47 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.organization.mvcproject.dao.MockDAO;
 import com.organization.mvcproject.model.Game;
+import com.organization.mvcproject.repository.GameDAOMock;
 
 @Service
 public class GameServiceImpl implements GameService {
 	
 	@Autowired
-	private MockDAO gameDAO; 
+	private GameDAOMock gameDAOMock; 
 
-	
+	@Override
 	public List<Game> retrieveAllGames() {
-		return gameDAO.retrieveAllGames();
+		return gameDAOMock.retrieveAllGames();
 	}
 
-	
+	@Override
 	public Game saveGame(Game game) {
-		return gameDAO.saveGame(game);
-	}
-	
-	
-	public Game findGameById(Long id) {
-		return gameDAO.findGameById(id);
+		return gameDAOMock.saveGame(game);
 	}
 
-	
-	public boolean deleteGame(Long id) {
-		return gameDAO.deleteGame(id); 
+
+	@Override
+	public Boolean deleteGame(Long gameId) {
+		return gameDAOMock.deleteGame(gameId); 
 	}
+
+
+	@Override
+	public Game updateGame(Game game) {
+		return gameDAOMock.saveGame(game);
+	}
+	
+	@Override
+	public Game findGameById(Long gameId) {
+		return gameDAOMock.findGameById(gameId);
+	}
+	
+	@Override
+	List<Game> findGamesByGenre(String genre) {
+		return gameDAOMock.findGamesByGenre(genre);
+	}
+
 	
 
 }

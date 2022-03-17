@@ -47,3 +47,4 @@ angular.module('GameApp').service('GameService', ['$http','$log', function($http
 			);
 		}
 }]);
+
